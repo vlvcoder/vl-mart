@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card menu-card" th:fragment="supply_fragment">
+    <div id="supplyHeader" class="card-header buyers-header">
+        Поставка товаров
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <table id="supplyDraw" class="table-progress">
+                <tr>
+                    <td><i class="fas fa-globe supply-point"></i></td>
+                    <td class="wide" style="border-bottom: 1px solid #5086a1; vertical-align: bottom">
+                        <i id="supplyTruck" class="fas fa-truck supply-point"
+                           style="font-size: 16px; margin-left: 0px"></i>
+                    </td>
+                    <td><i class="fas fa-home supply-point"></i></td>
+                </tr>
+            </table>
+            <table id="unloadDraw" class="table-progress">
+                <tr style="height: 30px">
+                    <td style="vertical-align: middle">
+                        <div class="progress progress-div">
+                            <div id="unloadProgressBar" class="progress-bar progress-start" role="progressbar"
+                                 aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <button id="supplyDeliveryButton" type="button" class="btn btn-sm"
+                    style="background-color: #5086a1; color: white"
+                    data-bs-toggle="tooltip" data-bs-placement="top"
+                    onclick="return supplyDeliveryButtonClick();"
+                    title="Заказать доставку товаров от поставщика">Заказать поставку
+            </button>
+            <button id="supplyUnloadButton" type="button" class="btn btn-info btn-sm"
+                    style="display: none"
+                    data-bs-toggle="tooltip" data-bs-placement="top"
+                    onclick="return supplyUnloadButtonClick();"
+                    title="Разгрузить доставленные товары">Начать разгрузку
+            </button>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="ui_fragment">
+
+    <!-- Alert -->
+    <div id="alertDiv" class="alert alert-dismissible fade show shadow" role="alert" style="display: none">
+        <strong class="alert-header"></strong>
+        <p class="alert-content">
+        </p>
+        <button type="button" class="btn-close" onclick="return closeAlert(this);" aria-label="Закрыть"></button>
+    </div>
+
+    <!-- Manuals -->
+    <div class="alert alert-primary alert-dismissible fade show shadow manual" role="alert">
+        <h5>
+            Приветствуем вас в
+        </h5>
+        <div style="width: 200px; margin: 0 auto">
+            <img src="/images/logo-no-background.png" alt="logo" style="width: 100%">
+        </div>
+        <br>
+        Вы - менеджер магазина.
+        <br>
+        <br>
+
+        <!--        <h5>-->
+        <!--            Приветствуем вас в-->
+        <!--            <div class="card" style="display: inline-block">-->
+        <!--                <div class="card-body text-white bg-opacity-75 rounded" style="padding: 5px; background-color: #6d7fcc">-->
+        <!--                    <i class="fas fa-home"></i>-->
+        <!--                    <strong style="padding-left: 5px">VL-MART</strong>-->
+        <!--                </div>-->
+        <!--            </div>!-->
+        <!--        </h5>-->
+        <!--        Вы - менеджер магазина.-->
+        <!--        <br>-->
+        <!--        <br>-->
+        Вы можете:
+        <ul>
+            <li>Выполнять действия в магазине:</li>
+            <ul>
+                <li>Пополнять товар на полке</li>
+                <li>Расчитывать покупателей на кассе</li>
+                <li>Разгружать поставку товаров</li>
+            </ul>
+            <li>Принимать на работу новых сотрудников</li>
+            <li>Модернизировать магазин</li>
+            <li>Заказывать поставку товаров</li>
+            <li>Расширять товарный ассортимент</li>
+            <li>Увеличивать складские места и полки в торговом зале</li>
+        </ul>
+        <button type="button" class="btn-close" onclick="return closeAlert(this);" aria-label="Закрыть"></button>
+    </div>
+
+    <div class="alert alert-light alert-dismissible fade show shadow manual" role="alert">
+        <h5>Список действий в магазине</h5>
+        <p>
+            Все действия в магазине выполняют сотрудники в соответствии с их должностью или вы в качестве менеджера
+            магазина
+        </p>
+        <table class="table" style="width: fit-content">
+            <thead>
+            <tr>
+                <td>Действие</td>
+                <td>Сотрудник</td>
+                <td>Длительность</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Пополнение товара на полке</td>
+                <td>
+                    <div class="card-body bg-primary text-white rounded staff-badge"
+                         data-bs-toggle="tooltip" data-bs-placement="top" title="Мерчендайзер"
+                         style="display: inline-block">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="card-body bg-success text-white rounded staff-badge"
+                         data-bs-toggle="tooltip" data-bs-placement="top" title="Менеджер"
+                         style="display: inline-block">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                </td>
+                <td>5 сек</td>
+            </tr>
+            <tr>
+                <td>Расчет покупателя на кассе</td>
+                <td>
+                    <div class="card-body bg-warning text-white rounded staff-badge"
+                         data-bs-toggle="tooltip" data-bs-placement="top" title="Кассир"
+                         style="display: inline-block">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div class="card-body bg-success text-white rounded staff-badge"
+                         data-bs-toggle="tooltip" data-bs-placement="top" title="Менеджер"
+                         style="display: inline-block">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                </td>
+                <td>1 сек * количество товарных единиц</td>
+            </tr>
+            <tr>
+                <td>Доставка товаров на склад от поставщика</td>
+                <td>
+                    <div class="card-body bg-success text-white rounded staff-badge"
+                         data-bs-toggle="tooltip" data-bs-placement="top" title="Менеджер"
+                         style="display: inline-block">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                </td>
+                <td>60 сек</td>
+            </tr>
+            <tr>
+                <td>Разгрузка доставленных товаров</td>
+                <td>
+                    <div class="card-body bg-danger text-white rounded staff-badge"
+                         data-bs-toggle="tooltip" data-bs-placement="top" title="Грузчик"
+                         style="display: inline-block">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="card-body bg-success text-white rounded staff-badge"
+                         data-bs-toggle="tooltip" data-bs-placement="top" title="Менеджер"
+                         style="display: inline-block">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                </td>
+                <td>Зависит от количества товара, количества грузчиков в штате и грузоподъемности</td>
+            </tr>
+            </tbody>
+        </table>
+        <p>
+            После выполнения каждой операции сотрудники делают перерыв в несколько секунд.<br>
+            В таблице Сотрудники это отображается значком
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                 class="bi bi-cup-hot-fill text-secondary" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                      d="M.5 6a.5.5 0 0 0-.488.608l1.652 7.434A2.5 2.5 0 0 0 4.104 16h5.792a2.5 2.5 0 0 0 2.44-1.958l.131-.59a3 3 0 0 0 1.3-5.854l.221-.99A.5.5 0 0 0 13.5 6H.5ZM13 12.5a2.01 2.01 0 0 1-.316-.025l.867-3.898A2.001 2.001 0 0 1 13 12.5Z"/>
+                <path d="m4.4.8-.003.004-.014.019a4.167 4.167 0 0 0-.204.31 2.327 2.327 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.593.593 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3.31 3.31 0 0 1-.202.388 5.444 5.444 0 0 1-.253.382l-.018.025-.005.008-.002.002A.5.5 0 0 1 3.6 4.2l.003-.004.014-.019a4.149 4.149 0 0 0 .204-.31 2.06 2.06 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.593.593 0 0 0-.09-.252A4.334 4.334 0 0 0 3.6 2.8l-.01-.012a5.099 5.099 0 0 1-.37-.543A1.53 1.53 0 0 1 3 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a5.446 5.446 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 4.4.8Zm3 0-.003.004-.014.019a4.167 4.167 0 0 0-.204.31 2.327 2.327 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.593.593 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3.31 3.31 0 0 1-.202.388 5.444 5.444 0 0 1-.253.382l-.018.025-.005.008-.002.002A.5.5 0 0 1 6.6 4.2l.003-.004.014-.019a4.149 4.149 0 0 0 .204-.31 2.06 2.06 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.593.593 0 0 0-.09-.252A4.334 4.334 0 0 0 6.6 2.8l-.01-.012a5.099 5.099 0 0 1-.37-.543A1.53 1.53 0 0 1 6 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a5.446 5.446 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 7.4.8Zm3 0-.003.004-.014.019a4.077 4.077 0 0 0-.204.31 2.337 2.337 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.593.593 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3.198 3.198 0 0 1-.202.388 5.385 5.385 0 0 1-.252.382l-.019.025-.005.008-.002.002A.5.5 0 0 1 9.6 4.2l.003-.004.014-.019a4.149 4.149 0 0 0 .204-.31 2.06 2.06 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.593.593 0 0 0-.09-.252A4.334 4.334 0 0 0 9.6 2.8l-.01-.012a5.099 5.099 0 0 1-.37-.543A1.53 1.53 0 0 1 9 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a5.446 5.446 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 10.4.8Z"/>
+            </svg>
+            <br>
+            <br>Если вы кликните по строке сотрудника - он завершит перерыв и немедленно приступит к выполнению
+            очередного задания.<br>
+        </p>
+        <button type="button" class="btn-close" onclick="return closeAlert(this);" aria-label="Закрыть"></button>
+    </div>
+
+    <div class="alert alert-light alert-dismissible fade show shadow manual" role="alert">
+        <h5>
+            На экране вы видите <strong>две таблицы с товарами</strong>.
+        </h5>
+        <p>
+            <span style="color: #e1cc4f">
+                    <i class="fas fa-th"></i><span class="menuitem">Полки</span>
+            </span>
+            - полки в торговом зале. Первое число означает оставшееся количество товаров, второе число - вместимость
+            полки. Покупатели берут товары с полок, остаток уменьшается. Вы должны <strong>пополнять</strong> полки
+            товарами
+            со склада.
+        </p>
+        <hr>
+        <p>
+            <span style="color: coral">
+                <i class="fas fa-th-large"></i><span class="menuitem">Склад</span>
+            </span>
+            - места на складе. Первое число означает оставшееся количество товаров, второе число - вместимость
+            места,
+            четвертое число - количество товаров в ожидаемой поставке (если она заказана).
+            Если товары на складе заканчиваются - вы можете пополнить склад, заказав <strong>Поставку товаров</strong>
+        </p>
+        <hr>
+        <p>
+            Блок между двумя таблицами отображает ход покупок и пополнения.
+        </p>
+        <img src="/images/mediator1.jpg" width="280px">
+        <br>
+        <br>
+        <img src="/images/mediator2.jpg" width="280px">
+        <br>
+        <br>
+        <img src="/images/mediator3.jpg" width="280px">
+        <button type="button" class="btn-close" onclick="return closeAlert(this);" aria-label="Закрыть"></button>
+    </div>
+
+    <div class="alert alert-info alert-dismissible fade show shadow manual" role="alert">
+        <h5>
+            Счет в игре
+        </h5>
+        <br>
+        <div class="score-money">
+            <i class="fas fa-money-bill-alt"></i><span class="menuitem">Деньги</span>
+        </div>
+        <p>Покупатели платят деньги за купленные товары.
+            <br>
+            На имеющиеся деньги вы можете выполнять модернизацию магазина и принимать новых сотрудников.
+            <br>
+            Развивайте бизнес, модернизируйте магазин, расширяйте товарный ассортимент.
+        </p>
+        <br>
+        <div class="score-likes">
+            <i class="fas fa-thumbs-up"></i><span class="menuitem">Лайки</span>
+        </div>
+        <p>
+            Ставятся покупателями за качественное обслуживание.
+        </p>
+        <table class="table table-striped" style="width: fit-content">
+            <tbody>
+            <tr>
+                <td class="tdlike">Отличный шопинг. Покупатель приобрел все нужные товары и не задержался надолго в
+                    очереди
+                </td>
+                <td class="tdvert"><i class="fas fa-thumbs-up score-likes"></i></td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <div class="score-dislikes">
+            <i class="fas fa-thumbs-down"></i><span class="menuitem">Дизлайки</span>
+        </div>
+        <p>
+            Ставятся покупателями за не очень качественное обслуживание.
+        </p>
+        <table class="table table-striped" style="width: fit-content">
+            <tbody>
+            <tr>
+                <td class="tdlike">Отсутствуют некоторые товары</td>
+                <td class="tdvert"><i class="fas fa-thumbs-down score-dislikes"></i></td>
+            </tr>
+            <tr>
+                <td class="tdlike">Отсутствуют все товары</td>
+                <td class="tdvert">
+                    <i class="fas fa-thumbs-down score-dislikes"></i>
+                    <i class="fas fa-thumbs-down score-dislikes"></i>
+                </td>
+            </tr>
+            <tr>
+                <td class="tdlike">Большая очередь в кассу (больше 5 человек)</td>
+                <td class="tdvert"><i class="fas fa-thumbs-down score-dislikes"></i></td>
+            </tr>
+            <tr>
+                <td class="tdlike">Долгое обслуживание на кассе</td>
+                <td class="tdvert"><i class="fas fa-thumbs-down score-dislikes"></i></td>
+            </tr>
+            <tr>
+                <td class="tdlike">Магазин закрыт (вы можете временно закрывать магазин для выполнения необходимых
+                    действий)
+                </td>
+                <td class="tdvert">
+                    <i class="fas fa-thumbs-down score-dislikes"></i>
+                    <i class="fas fa-thumbs-down score-dislikes"></i>
+                    <i class="fas fa-thumbs-down score-dislikes"></i>
+                    <i class="fas fa-thumbs-down score-dislikes"></i>
+                    <i class="fas fa-thumbs-down score-dislikes"></i>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <p>
+            <strong class="text-danger">Игра заканчивается</strong>,
+            если количество дизлайков превысит количество лайков или значение 1000
+        </p>
+
+        <button type="button" class="btn-close" onclick="return closeAlert(this);" aria-label="Закрыть"></button>
+    </div>
+
+</div>
+</body>
+</html>

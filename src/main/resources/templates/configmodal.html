@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="configmodal_fragment">
+
+    <!-- Modal -->
+    <div id="configsModal" class="modal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Текущие параметры</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Config table -->
+                    <table id="configsTable" class="table table-sm table-hover wide">
+                        <thead style="vertical-align: center">
+                            <tr style="vertical-align: center">
+                                <td class="tdheader">Параметр</td>
+                                <td class="tdheader tdintval" style="vertical-align: center">Значение</td>
+                                <td class="tdheader tdintval">Мин / Макс</td>
+                                <td class="tdheader tdintval">
+                                    <table class="wide">
+                                        <tr>
+                                            <td style="width: 50%">&nbsp;</td>
+                                            <td><i class="fas fa-thumbs-up score-likes"></i></td>
+                                            <td class="menuitem">&plusmn;1</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody id="configsTbody">
+                            <tr>
+                                <td>undef</td>
+                                <td class="tdintval">undef</td>
+                                <td class="tdintval">undef</td>
+                                <td class="tdintval">undef</td>
+                            </tr>
+                            <tr><td colspan="4" class="grayed">undef</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-ok btn-primary">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

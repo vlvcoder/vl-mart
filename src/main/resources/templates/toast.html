@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="toast_fragment">
+
+<!--    https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/bootstrap-toasts.php-->
+
+    <div class="m-4">
+        <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3">
+<!--        <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 2">-->
+            <div id="liveToast" class="toast" role="alert"
+                 aria-live="assertive" aria-atomic="true" data-bs-delay="10000">
+                <div class="toast-header bg-primary text-white">
+                    <i class="bi bi-info-circle"></i>
+                    <strong class="me-auto menuitem">undef</strong>
+                    <small>undef</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body text-white">
+                    undef
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

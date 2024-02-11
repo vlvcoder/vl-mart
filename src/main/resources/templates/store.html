@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-md-5 content-col-md" th:fragment="store_fragment">
+    <!-- Store ====================`================================= -->
+    <div class="card shadow-sm card-store" style="margin-bottom: 5px">
+        <div class="card-body">
+            <i class="fas fa-th-large"></i><span class="menuitem">Склад</span>
+        </div>
+    </div>
+    <table id="storeTable" class="table table-borderless table-hover table-sm shadow vlplace">
+        <tbody class="linked">
+        <tr
+                th:each="place : ${wrap.storePlaces}"
+                onclick="return fillProgressClick(this);"
+                good="undef"
+                th:attr="good=${place.good}"
+                class="table-light">
+            <td>
+                <img th:src="|/images/goods/${place.good}.png|" width="16px">
+                <span class="td1" th:text="${place.title}">undef</span>
+            </td>
+            <td class="td-progress">
+                <div class="progress progress-div">
+                    <div class="progress-bar progress-start" role="progressbar"></div>
+                </div>
+            </td>
+            <td class="td2" th:text="${place.stock}">undef</td>
+            <td class="td2" th:text="${place.capacity}">undef</td>
+            <td class="td3 grayed">
+                <span th:if="${place.waitingSupply > 0}" th:text="'+' + ${place.waitingSupply}">undef</span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

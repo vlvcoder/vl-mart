@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-md-5 content-col-md" th:fragment="shop_fragment">
+    <!-- Shop ===================================================== -->
+    <div class="card shadow-sm card-shop">
+        <div class="card-body">
+            <i class="fas fa-th"></i><span class="menuitem">Полки</span>
+        </div>
+    </div>
+    <table id="shopTable" class="table table-borderless table-hover table-sm shadow vlplace">
+        <tbody class="linked">
+        <tr
+                th:each="place : ${wrap.shopPlaces}"
+                onclick="return fillProgressClick(this);"
+                good="undef"
+                th:attr="good=${place.good}"
+                class="table-light">
+            <td>
+                <img th:src="|/images/goods/${place.good}.png|" width="16px">
+                <span class="td1" th:text="${place.title}">undef</span>
+            </td>
+            <td class="td-progress">
+                <div class="progress progress-div">
+                    <div class="progress-bar progress-start" role="progressbar"></div>
+                </div>
+            </td>
+            <td class="td2" th:text="${place.stock}">undef</td>
+            <td class="td3" th:text="${place.capacity}">undef</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

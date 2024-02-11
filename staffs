@@ -1,0 +1,7 @@
+cashier cas_1
+cashier cas_2
+shelver shel_bread --goods bread
+shelver shel_milk --goods milk
+shelver shel_cheese --goods cheese
+shelver shel_eggs --goods eggs
+shelver shel_sausage --goods sausage

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="supplyplanmodal_fragment">
+
+    <!-- Modal supply plan -->
+    <div id="supplyPlanModal" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-info">
+                    <h5 class="modal-title">План поставки товаров</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+
+                <div class="supply-plan-header">Заказ</div>
+                <div id="divCalls"></div>
+                <div class="supply-line"></div>
+                <div class="supply-plan-header">Количество</div>
+                <div id="divVolumes"></div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light btn-cancel btn-supply-confirm"
+                            data-bs-dismiss="modal">
+                        Отмена
+                    </button>
+                    <button type="button" class="btn btn-primary btn-ok btn-supply-confirm"
+                            onclick="return setSupplyPlan();">
+                        Ok
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sample call, volume item  -->
+    <div style="display: none">
+
+        <div id="supplyItem" class="form-check supply-item">
+            <input class="form-check-input" type="radio" name="undef" id="undef">
+            <label class="form-check-label" for="undef">
+                <table>
+                    <tr>
+                        <td class="tdsupply-title">undef</td>
+                        <td class="tdright tdsupply-price">
+                            <i class="bi bi-cart-check bought"></i>
+                            <span class="score-money">undef</span>
+                        </td>
+                    </tr>
+                </table>
+            </label>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card menu-card" th:fragment="buyers_fragment">
+    <div class="card-header buyers-header">
+        Покупатели
+    </div>
+    <ul id="buyerList" class="list-group list-group-flush">
+        <li class="list-group-item">
+            <span class="buyers-span">В зале</span>
+            <span state="BUY"></span>
+        </li>
+        <li class="list-group-item">
+            <span class="buyers-span">В очереди</span>
+            <span state="CASH_WAIT"></span>
+            <br>
+            <button id="btnCash" type="button" class="btn btn-warning btn-sm disabled"
+                    data-bs-toggle="tooltip" data-bs-placement="top"
+                    onclick="return btnCashClick();"
+                    title="Рассчитать очередного покупателя на кассе">На кассу
+            </button>
+            <table id="cashProcessing" class="table-progress">
+                <tr style="height: 30px">
+                    <td style="vertical-align: middle">
+                        <div class="progress progress-div">
+                            <div id="cashProcessingProgressBar" class="progress-bar progress-start bg-warning" role="progressbar"
+                                 aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </li>
+        <li class="list-group-item">
+            <span class="buyers-span">На кассе</span>
+            <span state="CASH"></span>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

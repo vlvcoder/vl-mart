@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="content" th:fragment="content_fragment">
+
+    <div class="container">
+        <div class="row">
+            <!-- Shop  -->
+            <div th:replace="shop :: shop_fragment"></div>
+            <!-- Mediator  -->
+            <div th:replace="mediator :: mediator_fragment"></div>
+            <!-- Store  -->
+            <div th:replace="store :: store_fragment"></div>
+        </div>
+    </div>
+
+    <!-- Alert, Manual  -->
+    <div th:replace="ui :: ui_fragment"></div>
+
+    <!-- Modal  -->
+    <div th:replace="modal :: modal_fragment"></div>
+
+    <!-- Modal place expand -->
+    <div th:replace="expandmodal :: expandmodal_fragment"></div>
+
+    <!-- Modal supply plan -->
+    <div th:replace="supplyplanmodal :: supplyplanmodal_fragment"></div>
+
+    <!-- Configs  -->
+    <div th:replace="configmodal :: configmodal_fragment"></div>
+
+    <!-- Toast  -->
+    <div th:replace="toast :: toast_fragment"></div>
+
+    <!-- Modernize interface  -->
+    <div th:replace="modernize :: modernize_fragment"></div>
+
+</div>
+</body>
+</html>

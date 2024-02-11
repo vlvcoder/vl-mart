@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<nav id="sidebar" th:fragment="sidebar_fragment">
+    <div class="sidebar-header shadow sm">
+        <img src="/images/logo-no-background.png" alt="logo" style="width: 200px">
+
+<!--        <h3>-->
+<!--            <i class="fas fa-home"></i>-->
+<!--            <span style="padding-left: 12px">VL-MART</span>-->
+<!--        </h3>-->
+    </div>
+
+    <ul class="list-unstyled components">
+        <li>
+            <!-- Score ===================================================== -->
+            <div th:replace="score :: score_fragment"></div>
+        </li>
+
+        <li>
+            <!-- Buyers ===================================================== -->
+            <div th:replace="buyers :: buyers_fragment"></div>
+        </li>
+
+        <li>
+            <!-- Supply ===================================================== -->
+            <div th:replace="supply :: supply_fragment"></div>
+        </li>
+
+        <li>
+            <!-- Staffs ===================================================== -->
+            <div th:replace="staffs :: staffs_fragment"></div>
+        </li>
+
+        <li>
+            <a href="#"
+               data-bs-toggle="offcanvas"
+               data-bs-target="#offcanvasBottom"
+               aria-controls="offcanvasBottom">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-building-up" viewBox="0 0 16 16">
+                    <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.354-5.854 1.5 1.5a.5.5 0 0 1-.708.708L13 11.707V14.5a.5.5 0 0 1-1 0v-2.793l-.646.647a.5.5 0 0 1-.708-.708l1.5-1.5a.5.5 0 0 1 .708 0Z"/>
+                    <path d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6.5a.5.5 0 0 1-1 0V1H3v14h3v-2.5a.5.5 0 0 1 .5-.5H8v4H3a1 1 0 0 1-1-1V1Z"/>
+                    <path d="M4.5 2a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Z"/>
+                </svg>
+                <span class="menuitem">Модернизация</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#" onclick="return showManual();">
+                <i class="bi bi-question-circle-fill"></i>
+                <span class="menuitem">Как играть</span>
+            </a>
+        </li>
+
+        <li class="active">
+            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"
+               class="dropdown-toggle">Управление</a>
+            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li>
+                    <a href="#" onclick="return configsClick();">
+                        <strong>
+                            <i class="fas fa-cog"></i>
+                            <span class="menuitem">Параметры</span>
+                        </strong>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="return setBackgroundClick();">
+                        <strong>
+                            <i class="bi bi-images"></i>
+                            <span class="menuitem">Фон</span>
+                        </strong>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="return resetClick();" class="text-danger bg-white">
+                        <strong>
+                            <i class="bi bi-arrow-counterclockwise"></i>
+                            <span class="menuitem">Начать заново</span>
+                        </strong>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+
+    <!--        <ul class="list-unstyled CTAs">-->
+    <!--            <li>-->
+    <!--                <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>-->
+    <!--            </li>-->
+    <!--            <li>-->
+    <!--                <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>-->
+    <!--            </li>-->
+    <!--        </ul>-->
+</nav>
+</body>
+</html>

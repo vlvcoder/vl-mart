@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-md-2 content-col-md" th:fragment="mediator_fragment">
+    <!-- Mediator ===================================================== -->
+    <div class="card shadow-sm" style="margin-bottom: 5px;visibility: hidden">
+        <div class="card-body">
+            &nbsp;
+        </div>
+    </div>
+    <table id="tableMediator" class="table table-borderless table-hover table-sm vlplace">
+        <tbody class="linked">
+        <tr
+                th:each="med : ${wrap.mediatorWraps}"
+                onclick="return fillProgressClick(this);"
+                good="undef"
+                th:attr="good=${med.good}">
+            <td class="mediator mediator-sign" data-bs-toggle="tooltip" data-bs-placement="top"
+                title="Количество товара, требуемое покупателям в торговом зале">
+                <div>
+                    <i class="fas fa-shopping-basket"></i>
+                    <span class="workitem" th:text="${med.buyersNeeds}">undef</span>
+                </div>
+            </td>
+            <td class="mediator" data-bs-toggle="tooltip" data-bs-placement="top"
+                title="Процесс пополнения товара">
+                <div class="progress progress-div" style="display: none">
+                    <div class="progress-bar progress-start" role="progressbar"
+                         aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </td>
+            <td class="mediator mediator-sign" data-bs-toggle="tooltip" data-bs-placement="top"
+                title="Добавляемое количество товара">
+                <div>
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="workitem" th:text="${med.movings}">undef</span>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

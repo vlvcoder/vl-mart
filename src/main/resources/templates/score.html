@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="cardScore" class="card menu-card" th:fragment="score_fragment">
+  <div class="card-body menu-card-body">
+    <div style="text-align: center;padding-bottom: 10px">
+      <button id="btnOpen" type="button" class="btn btn-outline-danger"
+              data-bs-toggle="tooltip" data-bs-placement="top"
+              title="Открыть магазин для покупателей"
+              onclick="return openCloseShop(true);">
+        <i class="fas fa-lock"></i>
+        Магазин закрыт
+      </button>
+      <button id="btnClose" type="button" class="btn btn-outline-success"
+              data-bs-toggle="tooltip" data-bs-placement="top"
+              title="Нажмите для закрытия магазина. Магазин будет закрыт для покупателей. Внутренние процессы продолжат выполняться"
+              onclick="return openCloseShop(false);">
+        <i class="fas fa-lock-open"></i>
+        Магазин открыт
+      </button>
+    </div>
+    <table class="score">
+      <tr class="score-money">
+        <td style="width: 10px"><i class="fas fa-money-bill-alt"></i></td>
+        <td><span class="menuitem">Деньги</span></td>
+        <td id="scoreMoney" class="tdright" th:text="${wrap.business.money}">def</td>
+      </tr>
+      <tr class="score-likes">
+        <td><i class="fas fa-thumbs-up"></i></td>
+        <td><span class="menuitem">Лайки</span></td>
+        <td id="scoreLike" class="tdright" th:text="${wrap.business.like}">def</td>
+      </tr>
+      <tr class="score-dislikes">
+        <td><i class="fas fa-thumbs-down"></i></td>
+        <td><span class="menuitem">Дизлайки</span></td>
+        <td id="scoreDislike" class="tdright" th:text="${wrap.business.dislike}">def</td>
+      </tr>
+    </table>
+  </div>
+</div>
+</body>
+</html>

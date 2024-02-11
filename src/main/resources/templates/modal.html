@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="modal_fragment">
+
+    <div class="modal fade" id="modalGameover" tabindex="-1"
+         data-bs-backdrop="static" data-bs-keyboard="false"
+         aria-labelledby="modalConfirmLabel" aria-hidden="true">
+    </div>
+
+    <!-- Modal -->
+    <div id="modalConfirm" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-white">
+                    <h5 class="modal-title" id="modalConfirmLabel">undef</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    undef
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light btn-cancel" data-bs-dismiss="modal">Отмена</button>
+                    <button type="button" class="btn btn-ok">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
