@@ -116,9 +116,10 @@ td.tdheader {
     MAIN
 ----------------------------------------------------- */
 #content {
-    /*background-image: url("https://source.unsplash.com/random");*/
-    background-image: url("https://loremflickr.com/1920/1080/");
-    background-repeat: no-repeat;
+    /*background-image: url("https://cdn.superfotooboi.ru/2020/04/small_CT00468.jpg");*/
+    background-image: url("https://stramigioliassociati.com/wp-content/uploads/2017/11/HiRes-Interiors-01.jpg");
+    /*background-image: url("https://loremflickr.com/1920/1080/");*/
+    /*background-repeat: no-repeat;*/
     background-size: 100%;
     /*background-position: cover;*/
     /*background: #fafafa url("https://informupack.ru/upload/iblock/6f9/6f9609172d65fca3bac68a223aa401a1.jpg") repeat top center;*/
