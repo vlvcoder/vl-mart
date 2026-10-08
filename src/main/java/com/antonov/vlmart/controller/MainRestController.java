@@ -127,11 +127,6 @@ public class MainRestController {
         return response;
     }
 
-    @GetMapping("/shipment")
-    public SimpleResponse shipment() {
-        return supplyService.createSupplyBlockWrap();
-    }
-
     @GetMapping("/unload")
     public SimpleResponse unload() {
         var response = employeeService.checkManagerBusy();
@@ -228,6 +223,11 @@ public class MainRestController {
     @GetMapping("/supplyplans")
     public SupplyPlanWrap getSupplyPlans() {
         return rootService.getSupplyPlans();
+    }
+
+    @GetMapping("/shipment")
+    public SimpleResponse shipment() {
+        return supplyService.createSupplyBlockWrap();
     }
 
 }

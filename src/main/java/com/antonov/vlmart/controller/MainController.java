@@ -31,6 +31,11 @@ public class MainController {
         return "test";
     }
 
+    @RequestMapping("/fupload")
+    public String fupload() {
+        return "fupload";
+    }
+
     @GetMapping("/hi")
     @ResponseBody
     public String hi() {

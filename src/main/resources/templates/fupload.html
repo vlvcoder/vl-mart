@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Creating Toast in Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#myBtn").click(function () {
+                $("#myToast").toast("show");
+            });
+
+            $("#fileInput").change(async (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const file = e.target.files[0];
+
+                // const res = uploadStream(file);
+                // console.log(res);
+
+                uploadInChunks(file, 1024 * 1024);
+            });
+
+            async function uploadStream(file) {
+                const stream = file.stream(); // Читаем файл как поток
+                const response = await fetch('/files/upload-duplex', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/octet-stream',
+                        'X-Filename': encodeURIComponent(file.name)
+                    },
+                    body: stream,
+                    duplex: 'half' // Обязательно для streaming body
+                });
+
+                return response.json();
+            }
+
+            async function uploadInChunks(file, chunkSize = 5 * 1024 * 1024) {
+                const totalChunks = Math.ceil(file.size / chunkSize);
+                const fileId = crypto.randomUUID();
+                const progress = document.getElementById('progress');
+                progress.value = 0;
+                progress.hidden = false;
+
+                for (let i = 0; i < totalChunks; i++) {
+                    progress.value = Math.floor((i / totalChunks) * 100);
+
+                    const chunk = file.slice(i * chunkSize, (i + 1) * chunkSize); // Blob, не в память
+                    const formData = new FormData();
+                    formData.append('fileId', fileId);
+                    formData.append('chunkIndex', i);
+                    formData.append('totalChunks', totalChunks);
+                    formData.append('chunk', chunk);
+
+                    await fetch('/files/upload-chunk', { method: 'POST', body: formData });
+                }
+                progress.value = 100;
+
+                // Финализация — склейка
+                await fetch('/files/upload-merge', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ fileId, totalChunks, filename: file.name })
+                });
+                progress.hidden = true;
+            }
+
+            $("#btnDownload").click(async function () {
+                downloadWithFSAPI('/files/download');
+            });
+
+            async function downloadWithFSAPI(url) {
+                // 1. Запрашиваем у пользователя место сохранения
+                const fileHandle = await window.showSaveFilePicker({
+                    suggestedName: 'large-file.jpeg'
+                });
+
+                // 2. Создаём writable поток к файлу на диске
+                const writable = await fileHandle.createWritable();
+
+                // 3. Забираем данные с сервера
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Download failed');
+
+                // 4. Направляем поток из сети напрямую в файл
+                await response.body.pipeTo(writable);
+            }
+
+        });
+    </script>
+
+</head>
+
+<body>
+    <div class="m-4">
+        <input type="file" id="fileInput">
+        <br>
+        <progress id="progress" value="0" max="100" hidden></progress>
+        <br>
+
+        <button id="btnDownload">Download</button>
+        <br>
+        <br>
+
+        <button id="myBtn">show toast</button>
+
+        <br>
+        <br>
+
+        <p><strong>Note:</strong> The <code>.show</code> is added to display the toast, and the class <code>.fade</code>
+            apply a CSS fade transition to the toast. By default, toast it is hidden.</p>
+
+        <div class="toast fade " id="myToast">
+            <div class="toast-header">
+                <strong class="me-auto"><i class="bi-gift-fill"></i> We miss you!</strong>
+                <small>11 mins ago</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                It's been a long time since you visited us. We've something special for you. <a href="#">Click here!</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
